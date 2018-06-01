@@ -5,7 +5,3 @@ export function selectBook(book) {
     payload:book
   }
 }
-
-export function randomAction() {
-  console.log("yet another action");
-}

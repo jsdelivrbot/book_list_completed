@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectBook, randomAction } from '../actions/index';
+import { selectBook } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class BookList extends Component {
@@ -10,7 +10,7 @@ class BookList extends Component {
         <li
           className = "list-group-item"
           key = {book.title}
-          onClick = {() => {this.props.selectBook(book), this.props.randomAction()}}>
+          onClick = {() => this.props.selectBook(book)}>
           {book.title}
         </li>
       )
@@ -36,10 +36,7 @@ function mapStateToProps(state) {
 // anything returned from this function will end up as props in the book-list
 function mapDispatchToProps(dispatch) {
   //Whenever selectBook is called, the result should be passed to all our reducers.
-  return bindActionCreators({
-    selectBook : selectBook,
-    randomAction : randomAction
-  }, dispatch);
+  return bindActionCreators({ selectBook : selectBook }, dispatch);
 }
 
 // Promote BookList from a component to a container
